@@ -1,0 +1,25 @@
+TITLE: Miyake Replication
+
+DATA:  File IS miyake2000.txt;
+       TYPE IS CORRELATION MEANS STDEVIATIONS;
+               NOBSERVATIONS IS 137;
+
+VARIABLE: Names are 
+            PlusMin NumLet LocGlo KeepTrk
+            ToneMon LetMem Antisac
+            StopSig Stroop WCST TOH RNG1 RNG2
+            OpSpan DualTask;
+     
+       USEVAR are PlusMin NumLet LocGlo KeepTrk
+            ToneMon LetMem Antisac
+            StopSig Stroop;
+         
+  MODEL: Shift BY PlusMin NumLet LocGlo;
+         Update BY KeepTrk ToneMon LetMem;
+         Inhib BY Antisac StopSig Stroop;
+
+ANALYSIS: 
+
+OUTPUT: STANDARDIZED;
+        RESIDUAL;
+        MOD;
